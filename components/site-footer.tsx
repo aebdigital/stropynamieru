@@ -127,7 +127,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook"
-                    className="footer-link hover:opacity-80 transition-opacity"
+                    className="social-icon"
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
@@ -137,18 +137,20 @@ export function SiteFooter() {
                       borderRadius: "9999px",
                       backgroundColor: "#1877F2",
                       color: "#ffffff",
+                      textDecoration: "none",
+                      flexShrink: 0,
+                      lineHeight: 0,
                     }}
                   >
                     <svg
-                      width="22"
-                      height="22"
-                      viewBox="8 4 9 17"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
                       fill="currentColor"
                       aria-hidden="true"
                       style={{ display: "block" }}
-                      preserveAspectRatio="xMidYMid meet"
                     >
-                      <path d="M13.5 21v-7.5h2.5l.5-3h-3V8.6c0-.9.3-1.5 1.6-1.5H17V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.1v2H8v3h2.5V21h3z" />
+                      <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z" />
                     </svg>
                   </a>
                 </div>
