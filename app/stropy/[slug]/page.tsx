@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { SERVICES } from "@/lib/services";
 import { SiteImage } from "@/components/site-image";
+import { StropGallery } from "@/components/strop-gallery";
 import { RollingText } from "@/components/rolling-text";
 import { StropySidebar } from "@/components/stropy-sidebar";
 import { createPageMetadata } from "@/lib/metadata";
@@ -61,19 +62,7 @@ export default async function StropDetailPage({ params }: PageProps) {
               <h2 className="section-title">{service.title}</h2>
               <p className="strop-description">{service.fullDescription}</p>
               
-              <div className="strop-gallery-grid">
-                {service.images.map((img, idx) => (
-                  <div key={idx} className="strop-gallery-item">
-                    <SiteImage
-                      src={img}
-                      alt={`${service.title} ${idx + 1}`}
-                      fill
-                      className="gallery-image"
-                      sizes="(max-width: 768px) 50vw, 33vw"
-                    />
-                  </div>
-                ))}
-              </div>
+              <StropGallery images={service.images} title={service.title} />
 
               <div className="cta-container">
                 <a

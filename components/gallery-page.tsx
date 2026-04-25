@@ -65,6 +65,8 @@ type Props = {
   initialFilter?: string;
 };
 
+import { AnimatePresence, motion } from "framer-motion";
+
 export function GalleryPage({ initialFilter }: Props) {
   const startingFilter =
     initialFilter && FILTERS.some((item) => item.key === initialFilter)
@@ -155,60 +157,88 @@ export function GalleryPage({ initialFilter }: Props) {
         </div>
       </section>
 
-      <div className={`lightbox ${lightboxItem ? "active" : ""}`}>
-        <div className="lightbox-content">
-          <button
-            type="button"
-            className="lightbox-close"
+      <AnimatePresence>
+        {lightboxIndex !== null && lightboxItem && (
+          <motion.div 
+            className="lightbox active"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             onClick={() => setLightboxIndex(null)}
           >
-            &times;
-          </button>
-          <button
-            type="button"
-            className="lightbox-nav lightbox-prev"
-            onClick={() =>
-              setLightboxIndex((prev) =>
-                prev === null
-                  ? 0
-                  : (prev - 1 + visibleItems.length) % visibleItems.length,
-              )
-            }
-          >
-            &#8249;
-          </button>
+            <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+              <button
+                type="button"
+                className="lightbox-close"
+                onClick={() => setLightboxIndex(null)}
+              >
+                &times;
+              </button>
+              
+              <button
+                type="button"
+                className="lightbox-nav lightbox-prev"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIndex((prev) =>
+                    prev === null
+                      ? 0
+                      : (prev - 1 + visibleItems.length) % visibleItems.length,
+                  );
+                }}
+              >
+                &#8249;
+              </button>
 
-          {lightboxItem ? (
-            <div className="lightbox-image-frame">
-              <SiteImage
-                id="lightbox-image"
-                className="lightbox-image"
-                src={lightboxItem.src}
-                alt={lightboxItem.alt}
-                fill
-                sizes="90vw"
-                onClick={() =>
+              <div className="lightbox-image-frame overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={lightboxItem.src}
+                    initial={{ opacity: 0, scale: 0.9, x: 20 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, x: -20 }}
+                    transition={{ 
+                      duration: 0.4, 
+                      ease: [0.23, 1, 0.32, 1] 
+                    }}
+                    className="w-full h-full relative"
+                  >
+                    <SiteImage
+                      id="lightbox-image"
+                      className="lightbox-image"
+                      src={lightboxItem.src}
+                      alt={lightboxItem.alt}
+                      fill
+                      sizes="90vw"
+                      priority
+                      onClick={() =>
+                        setLightboxIndex((prev) =>
+                          prev === null ? 0 : (prev + 1) % visibleItems.length,
+                        )
+                      }
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              <button
+                type="button"
+                className="lightbox-nav lightbox-next"
+                onClick={(e) => {
+                  e.stopPropagation();
                   setLightboxIndex((prev) =>
                     prev === null ? 0 : (prev + 1) % visibleItems.length,
-                  )
-                }
-              />
+                  );
+                }}
+              >
+                &#8250;
+              </button>
             </div>
-          ) : null}
-
-          <button
-            type="button"
-            className="lightbox-nav lightbox-next"
-            onClick={() =>
-              setLightboxIndex((prev) =>
-                prev === null ? 0 : (prev + 1) % visibleItems.length,
-              )
-            }
-          >
-            &#8250;
-          </button>
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
+

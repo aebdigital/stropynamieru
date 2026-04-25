@@ -1579,9 +1579,9 @@
         flex-direction: column;
         text-align: left;
         gap: 20px;
-        padding: 0 15px 30px;
-        margin-top: auto;
-        padding-top: 20px;
+        padding: 20px 0 30px !important;
+        width: 90vw !important;
+        margin: 0 auto !important;
     }
 
     .hero-title {
@@ -1853,9 +1853,15 @@
 /* Additional mobile styles for smaller screens */
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2rem;
-        margin-bottom: 12px;
+        font-size: 2.8rem;
+        margin-bottom: 20px;
         text-align: left;
+        line-height: 1.1;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 24px;
     }
 
     .hero-actions {
@@ -2106,8 +2112,19 @@
     }
 
     .hero-content {
-        gap: 36px;
-        padding-bottom: 84px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 48px;
+        padding: 0 0 60px !important;
+        width: 90vw !important;
+        margin: 0 auto !important;
+        max-width: none !important;
+    }
+
+    .hero-text, .hero-right {
+        max-width: 100%;
+        width: 100%;
+        flex: none;
     }
 
     .hero-kicker {
