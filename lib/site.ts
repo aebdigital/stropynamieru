@@ -16,7 +16,7 @@ export const siteConfig = {
     addressCountry: "SK",
   },
   sameAs: [
-    "https://www.facebook.com/people/Stropy-na-mieru/100083050156481/",
+    "https://www.facebook.com/p/Stropy-na-mieru-100083050156481/",
     "https://share.google/SzDGndyCDmy52TPET",
   ],
   keywords: [
