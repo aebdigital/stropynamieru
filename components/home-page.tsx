@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { RollingText } from "@/components/rolling-text";
 import { SiteImage } from "@/components/site-image";
+import { motion } from "framer-motion";
 
 type HeroSlide = {
   src: string;
@@ -126,35 +127,35 @@ const SERVICE_CARDS: ServiceCard[] = [
     description:
       "Elegantné riešenie s jemným saténovým povrchom. Dokonale skrýva nerovnosti pôvodného stropu a vytvára príjemnú atmosféru v miestnosti.",
     image: "/assets/images/Satenove stropy/IMG_0146-1.jpeg",
-    href: "/stropy#satenovy",
+    href: "/stropy/satenove-stropy",
   },
   {
     title: "Lesklé stropy",
     description:
       "Luxusné lesklé stropy, ktoré opticky zväčšujú priestor a odrážajú svetlo. Ideálne pre moderne zariadené interiéry.",
     image: "/assets/images/S vysokym leskom/IMG_0320-1.jpeg",
-    href: "/stropy#vysoky-lesk",
+    href: "/stropy/leskle-stropy",
   },
   {
     title: "Matné stropy",
     description:
       "Klasické matné prevedenie s nenápadným vzhľadom. Vhodné pre tradičné interiéry, kde nechcete príliš výrazný efekt.",
     image: "/assets/images/Matny napinaci strop/IMG_1900-1.jpeg",
-    href: "/stropy#matny",
+    href: "/stropy/matne-stropy",
   },
   {
     title: "Stropy s fototlačou",
     description:
       "Jedinečné riešenie s vlastnou grafickou úpravou. Môžete si vybrať z našich vzorov alebo navrhnúť vlastný dizajn.",
     image: "/assets/images/Napinacie stropy s fototlacou/IMG_0951-1.jpeg",
-    href: "/stropy#fototlac",
+    href: "/stropy/stropy-s-fototlacou",
   },
   {
     title: "Translucentné stropy",
     description:
       "Priehľadné alebo polpriehľadné stropy umožňujúce zaujímavé svetelné efekty. Ideálne v kombinácii s LED osvetlením.",
     image: "/assets/images/Translucentne stropy/IMG_0486-1.jpeg",
-    href: "/stropy#translucentne",
+    href: "/stropy/translucentne-stropy",
   },
 ];
 
@@ -256,12 +257,6 @@ const REVIEWS: Review[] = [
   },
 ];
 
-const HERO_TRUST_POINTS = [
-  "Bez prachu a mokrých procesov",
-  "Certifikované materiály",
-  "Rýchla montáž na mieru",
-];
-
 function ArrowIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -327,13 +322,16 @@ export function HomePage() {
   return (
     <main>
       <section id="home" className="hero">
-        <div
+        <div 
           className="hero-background"
           style={{
             transform: `translate3d(0, ${heroParallaxY}px, 0)`,
             willChange: "transform",
-            top: "-15%",
-            height: "130%",
+            height: "120vh",
+            top: "-10vh",
+            position: "absolute",
+            width: "100%",
+            left: 0
           }}
         >
           {HERO_SLIDES.map((slide, index) => (
@@ -354,38 +352,74 @@ export function HomePage() {
         </div>
 
         <div className="hero-content">
-          <div className="hero-text">
-            <p className="hero-kicker">Napínacie stropy v Banskej Bystrici a okolí</p>
-            <h1 className="hero-title">
+          <motion.div 
+            className="hero-text"
+            initial="initial"
+            animate="animate"
+            variants={{
+              animate: {
+                transition: {
+                  staggerChildren: 0.15,
+                  delayChildren: 0.3
+                }
+              }
+            }}
+          >
+            <motion.p 
+              className="hero-kicker"
+              variants={{
+                initial: { opacity: 0, y: 20 },
+                animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+              }}
+            >
+              Napínacie stropy v Banskej Bystrici a okolí
+            </motion.p>
+            
+            <motion.h1 
+              className="hero-title"
+              variants={{
+                initial: { opacity: 0, y: 30 },
+                animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+              }}
+            >
               Čistý, presný a moderný strop bez kompromisov
-            </h1>
-            <p className="hero-subtitle">
+            </motion.h1>
+            
+            <motion.p 
+              className="hero-subtitle"
+              variants={{
+                initial: { opacity: 0, y: 30 },
+                animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+              }}
+            >
               Navrhujeme a montujeme napínacie stropy, ktoré opticky zväčšia
               priestor, skryjú nerovnosti a zostanú elegantné dlhé roky. Od
               prvého zamerania po finálnu montáž držíme čistú realizáciu,
               poctivý detail a materiály, ktoré sú overené praxou.
-            </p>
-            <div className="hero-trust">
-              {HERO_TRUST_POINTS.map((item) => (
-                <span key={item} className="hero-trust-item">
-                  {item}
-                </span>
-              ))}
-            </div>
-            <div className="hero-actions">
-              <Link href="/kontakt" className="cta-btn primary rolling-button">
+            </motion.p>
+            
+            <motion.div 
+              className="hero-actions"
+              variants={{
+                initial: { opacity: 0, y: 20 },
+                animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+              }}
+            >
+              <Link href="/cenova-ponuka" className="cta-btn primary rolling-button">
                 <RollingText primary="Kontakt" secondary="Poďme sa spojiť" />
               </Link>
-              <Link href="/stropy" className="cta-btn secondary rolling-button">
+              <Link href="#services" className="cta-btn secondary rolling-button">
                 <RollingText primary="Napínacie stropy" secondary="Pozrieť typy" />
               </Link>
-            </div>
-            <a href="#about" className="hero-scroll-link">
-              Posunúť k detailom
-            </a>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="hero-right">
+          <motion.div 
+            className="hero-right"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="hero-stats">
               <div className="stat-item">
                 <div className="stat-number">
@@ -427,11 +461,12 @@ export function HomePage() {
             >
               VIAC REFERENCIÍ
             </a>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section id="about" className="about section-overlap">
+      <div className="main-content-wrap">
+        <section id="about" className="about section-overlap">
         <div className="container">
           <div className="about-content">
             <div className="about-left">
@@ -538,30 +573,6 @@ export function HomePage() {
                 </Link>
               ))}
 
-              <div className="service-card service-more-btn">
-                <div className="service-card-content">
-                  <Link href="/stropy" className="services-all-btn rolling-button">
-                    <span className="rolling-button__content">
-                      <RollingText primary="Viac o stropoch" secondary="Pozrieť detaily" />
-                      <svg
-                        className="button-arrow"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
-                        <path
-                          d="M5 12H19M19 12L12 5M19 12L12 19"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </Link>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -571,33 +582,25 @@ export function HomePage() {
         <div className="container">
           <div className="why-choose-content">
             <div className="why-choose-header">
-              <h2 className="section-title" data-text="Prečo zvoliť napínacie stropy?">
-                PREČO ZVOLIŤ NAPÍNACIE STROPY?
+              <h2 className="section-title" data-text="AKO PREBIEHA INŠTALÁCIA?">
+                AKO PREBIEHA INŠTALÁCIA?
               </h2>
             </div>
-            <div className="why-choose-grid">
-              <div className="why-choose-left">
-                <div className="benefit-card full-width">
-                  <h3>Výhody Napínacích stropov</h3>
-                  <div className="benefits-list">
-                    {[
-                      "Ukryje všetky inštalácie a nedokonalosti hrubej stavby (napr. káble, nerovnosti, praskliny)",
-                      "Môže mať aj farebné vyhotovenie a v kombinácii s osvetlením vytvorí moderné vzhľady",
-                      "Nežltne neovísa a nie je ho možné jednoducho poškodiť",
-                      "Je zdraviu nezávadný, časom nepraská, je vodovzdorný a nepodporuje horenie",
-                      "Opticky zväčšuje priestor",
-                    ].map((item) => (
-                      <div key={item} className="benefit-item">
-                        <div className="benefit-check">✓</div>
-                        <p>{item}</p>
-                      </div>
-                    ))}
-                  </div>
+            <div className="installation-row">
+              <div className="installation-image-col">
+                <div className="installation-image-wrap">
+                  <SiteImage
+                    src="/assets/images/Translucentne stropy/IMG_6547-1.jpeg"
+                    alt="Montáž napínacieho stropu"
+                    fill
+                    className="installation-media"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
-
-                <div className="benefit-card full-width" style={{ marginTop: "40px" }}>
-                  <h3>Ako prebieha inštalácia?</h3>
-                  <div style={{ color: "#666", lineHeight: 1.6 }}>
+              </div>
+              <div className="installation-content-col">
+                <div className="benefit-card full-width">
+                  <div style={{ color: "rgba(255,255,255,0.7)", lineHeight: 1.8 }}>
                     <p style={{ marginBottom: "20px" }}>
                       Montáž napínacieho stropu začína obhliadkou miestnosti, kde sa
                       strop bude realizovať. Základom rýchlej a bezproblémovej
@@ -631,35 +634,6 @@ export function HomePage() {
                       napínacieho stropu ukončená.
                     </p>
                   </div>
-                </div>
-              </div>
-
-              <div className="why-choose-right">
-                <div className="benefit-card">
-                  <h3>Elegantný dizajn a variabilita povrchu</h3>
-                  <p>
-                    Napínacie stropy môžu byť matné s efektom omietky, lesklé so
-                    zrkadlovým efektom alebo saténové. K dispozícii sú aj farebné
-                    vyhotovenia a možnosť grafických prvkov, ktoré v kombinácii s
-                    osvetlením vytvoria jedinečnú atmosféru.
-                  </p>
-                </div>
-                <div className="benefit-card">
-                  <h3>Praktickosť a jednoduchá údržba</h3>
-                  <p>
-                    Tieto stropy sú odolné proti žltnutiu, praskaniu a sú ľahko
-                    čistiteľné. Plátno z PVC má mimoriadnu pevnosť a v prípade
-                    zatopenia dokáže zadržať až 100 litrov vody na meter štvorcový,
-                    čo zaručí ochranu interiéru.
-                  </p>
-                </div>
-                <div className="benefit-card">
-                  <h3>Rýchla a efektívna montáž</h3>
-                  <p>
-                    Montáž napínacieho stropu je omnoho rýchlejšia ako pri
-                    sadrokartóne. Výsledný strop je zdravý, ekologicky bezpečný a
-                    vhodný aj do nevykurovaných miestností.
-                  </p>
                 </div>
               </div>
             </div>
@@ -701,6 +675,39 @@ export function HomePage() {
                   </div>
                 </div>
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="features-grid">
+        <div className="container">
+          <div className="features-container">
+            <div className="feature-item">
+              <h3>Elegantný dizajn a variabilita povrchu</h3>
+              <p>
+                Napínacie stropy môžu byť matné s efektom omietky, lesklé so
+                zrkadlovým efektom alebo saténové. K dispozícii sú aj farebné
+                vyhotovenia a možnosť grafických prvkov, ktoré v kombinácii s
+                osvetlením vytvoria jedinečnú atmosféru.
+              </p>
+            </div>
+            <div className="feature-item">
+              <h3>Praktickosť a jednoduchá údržba</h3>
+              <p>
+                Tieto stropy sú odolné proti žltnutiu, praskaniu a sú ľahko
+                čistiteľné. Plátno z PVC má mimoriadnu pevnosť a v prípade
+                zatopenia dokáže zadržať až 100 litrov vody na meter štvorcový,
+                čo zaručí ochranu interiéru.
+              </p>
+            </div>
+            <div className="feature-item">
+              <h3>Rýchla a efektívna montáž</h3>
+              <p>
+                Montáž napínacieho stropu je omnoho rýchlejšia ako pri
+                sadrokartóne. Výsledný strop je zdravý, ekologicky bezpečný a
+                vhodný aj do nevykurovaných miestností.
+              </p>
             </div>
           </div>
         </div>
@@ -790,6 +797,7 @@ export function HomePage() {
           </div>
         </div>
       </section>
+      </div>
     </main>
   );
 }

@@ -96,14 +96,27 @@
     line-height: 1.4;
 }
 
-.footer-contact a {
-    color: rgb(54, 54, 80);
+.footer-contact-link {
+    color: #66b3ff !important;
     text-decoration: none;
+    position: relative;
+    display: inline-block;
     transition: color 0.3s ease;
 }
 
-.footer-contact a:hover {
-    color: #66b3ff;
+.footer-contact-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-contact-link:hover::after {
+    width: 100%;
 }
 
 .footer-business-info {

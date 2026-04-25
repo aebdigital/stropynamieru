@@ -15,7 +15,7 @@ type NavLink = {
 
 const NAV_LINKS: NavLink[] = [
   { href: "/", label: "Domov" },
-  { href: "/stropy", label: "Stropy", hasDropdown: true },
+  { href: "#", label: "Stropy", hasDropdown: true },
   { href: "/galeria", label: "Galéria" },
   { href: "/cenova-ponuka", label: "Cenová ponuka" },
   { href: "/kontakt", label: "Kontakt" },
@@ -107,32 +107,59 @@ export function SiteHeader() {
                 onMouseEnter={() => item.hasDropdown && setDesktopDropdownOpen(true)}
                 onMouseLeave={() => item.hasDropdown && setDesktopDropdownOpen(false)}
               >
-                <Link
-                  href={item.href}
-                  className={`nav-link ${isActive(pathname, item.href) ? "active" : ""}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {item.label}
-                  {item.hasDropdown && (
-                    <span className="dropdown-icon">
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M2.5 4.5L6 8L9.5 4.5"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  )}
-                </Link>
+                {item.href === "#" ? (
+                  <div
+                    className={`nav-link ${item.hasDropdown ? "cursor-default" : ""}`}
+                  >
+                    {item.label}
+                    {item.hasDropdown && (
+                      <span className="dropdown-icon">
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 12 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M2.5 4.5L6 8L9.5 4.5"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={`nav-link ${isActive(pathname, item.href) ? "active" : ""}`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                    {item.hasDropdown && (
+                      <span className="dropdown-icon">
+                        <svg
+                          width="12"
+                          height="12"
+                          viewBox="0 0 12 12"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M2.5 4.5L6 8L9.5 4.5"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    )}
+                  </Link>
+                )}
 
                 {item.hasDropdown && (
                   <AnimatePresence>
@@ -221,13 +248,19 @@ export function SiteHeader() {
                 <ul className="mobile-nav-menu">
                   {NAV_LINKS.map((item) => (
                     <li key={`mobile-${item.href}`}>
-                      <Link
-                        href={item.href}
-                        className={`mobile-nav-link ${isActive(pathname, item.href) ? "active" : ""}`}
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {item.label}
-                      </Link>
+                        {item.href === "#" ? (
+                          <div className="mobile-nav-link no-link">
+                            {item.label}
+                          </div>
+                        ) : (
+                          <Link
+                            href={item.href}
+                            className={`mobile-nav-link ${isActive(pathname, item.href) ? "active" : ""}`}
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            {item.label}
+                          </Link>
+                        )}
                       {item.hasDropdown && (
                         <ul className="mobile-submenu">
                           {SERVICES.map((service) => (

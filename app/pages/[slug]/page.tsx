@@ -5,7 +5,7 @@ type Params = {
 };
 
 const LEGACY_MAP: Record<string, string> = {
-  "stropy.html": "/stropy",
+  "stropy.html": "/",
   "galeria.html": "/galeria",
   "cenova-ponuka.html": "/cenova-ponuka",
   "kontakt.html": "/kontakt",

@@ -1,6 +1,7 @@
 import { PricingForm } from "@/components/pricing-form";
 import { SiteImage } from "@/components/site-image";
 import { createPageMetadata } from "@/lib/metadata";
+import { HeroReveal } from "@/components/hero-reveal";
 
 export const metadata = createPageMetadata({
   title: "Cenová ponuka napínacích stropov",
@@ -12,7 +13,7 @@ export const metadata = createPageMetadata({
 export default function CenovaPonukaPage() {
   return (
     <main>
-      <section className="hero-pricing page-hero">
+      <section className="page-hero">
         <div className="page-hero-media">
           <SiteImage
             src="/assets/images/Translucentne stropy/IMG_0486-1.jpeg"
@@ -24,9 +25,11 @@ export default function CenovaPonukaPage() {
           />
         </div>
         <div className="container">
-          <h1 data-text="Cenová ponuka" className="animate">
-            Cenová ponuka
-          </h1>
+          <HeroReveal>
+            <h1>
+              Cenová ponuka
+            </h1>
+          </HeroReveal>
         </div>
       </section>
 

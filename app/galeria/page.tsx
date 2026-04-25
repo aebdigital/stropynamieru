@@ -1,6 +1,7 @@
 import { GalleryPage } from "@/components/gallery-page";
 import { SiteImage } from "@/components/site-image";
 import { createPageMetadata } from "@/lib/metadata";
+import { HeroReveal } from "@/components/hero-reveal";
 
 export const metadata = createPageMetadata({
   title: "Galéria realizovaných projektov",
@@ -17,7 +18,7 @@ export default async function GaleriaPage({
   const params = await searchParams;
   return (
     <main>
-      <section className="hero-portfolio page-hero">
+      <section className="page-hero">
         <div className="page-hero-media">
           <SiteImage
             src="/assets/images/Translucentne stropy/IMG_0486-1.jpeg"
@@ -29,9 +30,11 @@ export default async function GaleriaPage({
           />
         </div>
         <div className="container">
-          <h1 data-text="Galéria" className="animate">
-            Galéria
-          </h1>
+          <HeroReveal>
+            <h1>
+              Galéria
+            </h1>
+          </HeroReveal>
         </div>
       </section>
       <GalleryPage initialFilter={params.filter} />

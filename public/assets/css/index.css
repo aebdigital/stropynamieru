@@ -70,12 +70,14 @@
 }
 
 .hero-title {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    max-width: 650px;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    max-width: 900px;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
 }
 
 .hero-subtitle {
@@ -1096,7 +1098,7 @@
 /* Why Choose Section Styles */
 .why-choose {
     padding: 120px 0 !important;
-    background: rgb(54, 54, 80) !important;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
     position: relative !important;
     overflow: hidden !important;
 }
@@ -1122,16 +1124,46 @@
 .why-choose .section-title {
     color: white !important;
     text-align: left !important;
-  
+    margin-bottom: 80px !important;
 }
 
-.why-choose-grid {
-    display: grid !important;
-    grid-template-columns: 1.2fr 1fr !important;
-    gap: 80px !important;
-    align-items: start !important;
-    position: relative !important;
-    z-index: 2 !important;
+.installation-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.installation-image-col {
+    position: relative;
+    height: 600px;
+}
+
+.installation-image-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+.installation-media {
+    object-fit: cover;
+}
+
+@media (max-width: 992px) {
+    .installation-row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .installation-image-col {
+        height: 400px;
+        order: -1;
+    }
 }
 
 .why-choose-left {
@@ -1142,19 +1174,18 @@
 .why-choose-right {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 30px !important;
+    gap: 60px !important;
 }
 
 .benefit-card {
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(20px) !important;
-    padding: 50px !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
     border-radius: 0 !important;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: none !important;
+    border: none !important;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
     position: relative !important;
-    overflow: hidden !important;
 }
 
 .benefit-card.full-width {
@@ -1162,47 +1193,40 @@
 }
 
 .benefit-icon {
-    background: rgb(54, 54, 80) !important;
+    background: transparent !important;
     color: white !important;
-    width: 80px !important;
-    height: 80px !important;
-    border-radius: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin-bottom: 30px !important;
-    box-shadow: 0 10px 30px rgba(54, 54, 80, 0.2) !important;
-    transition: all 0.3s ease !important;
+    width: auto !important;
+    height: auto !important;
+    margin-bottom: 25px !important;
+    box-shadow: none !important;
 }
 
 .benefit-card h3 {
-    font-size: 1.6rem !important;
+    font-size: 1.8rem !important;
     font-weight: 700 !important;
-    margin-bottom: 20px !important;
-    color: #2c3e50 !important;
+    margin-bottom: 25px !important;
+    color: white !important;
     position: relative !important;
 }
 
 .benefit-card p {
-    color: #555 !important;
-    line-height: 1.7 !important;
-    font-size: 1rem !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    line-height: 1.8 !important;
+    font-size: 1.1rem !important;
 }
 
 .why-choose-left .benefit-card h3 {
-    color: #2c3e50 !important;
-    border-bottom: 3px solid transparent !important;
-    background: linear-gradient(white, white) padding-box,
-               linear-gradient(90deg, #28a745, #20c997) border-box !important;
-    border-image: linear-gradient(90deg, #28a745, #20c997) 1 !important;
-    padding-bottom: 15px !important;
-    margin-bottom: 30px !important;
+    color: white !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: none !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 40px !important;
 }
 
 .benefits-list {
     display: flex !important;
     flex-direction: column !important;
-    gap: 20px !important;
+    gap: 30px !important;
 }
 
 .benefit-item {
@@ -1212,20 +1236,19 @@
 }
 
 .benefit-check {
-    background: rgb(54, 54, 80) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
     color: white !important;
-    width: 32px !important;
-    height: 32px !important;
-    border-radius: 0 !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     font-weight: bold !important;
     flex-shrink: 0 !important;
-    margin-top: 2px !important;
-    box-shadow: 0 4px 12px rgba(54, 54, 80, 0.3) !important;
-    font-size: 16px !important;
-    animation: pulse 2s infinite !important;
+    margin-top: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    font-size: 14px !important;
 }
 
 @keyframes pulse {
@@ -2109,5 +2132,57 @@
 
     .about-image {
         min-height: 360px;
+    }
+}
+
+/* Features Grid Section (New) */
+.features-grid {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.feature-item {
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 0;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-item h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.feature-item p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: white;
+}
+
+@media (max-width: 992px) {
+    .features-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 }

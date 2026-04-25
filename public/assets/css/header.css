@@ -49,6 +49,25 @@
     transition: color 0.3s ease;
     position: relative;
     padding-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
 }
 
 .hamburger {

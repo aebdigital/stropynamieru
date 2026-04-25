@@ -33,7 +33,6 @@ export const siteConfig = {
 
 export const siteRoutes = [
   { path: "/", priority: 1, changeFrequency: "weekly" as const },
-  { path: "/stropy", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/galeria", priority: 0.8, changeFrequency: "weekly" as const },
   { path: "/cenova-ponuka", priority: 0.85, changeFrequency: "monthly" as const },
   { path: "/kontakt", priority: 0.85, changeFrequency: "monthly" as const },

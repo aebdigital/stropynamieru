@@ -1,59 +1,10 @@
 /* Contact Page Specific Styles */
 
-.hero-contact {
-    padding: 120px 0 80px;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/Translucentne stropy/IMG_0486-1.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    text-align: center;
-    color: white;
-}
-
-/* Override transparent navbar styles for contact page */
-.navbar-transparent .logo-text .logo-line {
-    color: white !important;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
-}
-
-.navbar-transparent .nav-link {
-    color: white !important;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Override for mobile navigation - keep dark text */
-@media (max-width: 768px) {
-    .nav-menu .nav-link {
-        color: #333 !important;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
-    }
-}
-
-.navbar-transparent .hamburger span {
-    background: white !important;
-}
-
-.hero-contact h1 {
-    font-size: 6.75rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 1rem;
-    text-align: left;
-    margin-left: 80px;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease;
-    line-height: 1.1;
-}
-
-.hero-contact h1.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* Hero styles moved to global page-hero */
 
 .contact-content {
     padding: 6rem 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: #fff;
 }
 
 .contact-grid {
@@ -66,27 +17,26 @@
 }
 
 .contact-info {
-    
-  
-    border-radius: 20px;
-    
-    
+    background: rgb(54, 54, 80);
+    padding: 3rem;
+    border-radius: 24px;
+    color: white;
 }
 
 .contact-info h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #000;
+    color: #fff;
     margin-bottom: 2rem;
 }
 
 .contact-item {
     margin-bottom: 2rem;
     padding: 2rem;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 16px;
-    border: 1px solid rgba(54, 54, 80, 0.1);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -99,7 +49,7 @@
     left: 0;
     width: 4px;
     height: 100%;
-    background: linear-gradient(135deg, rgb(54, 54, 80), #007bff);
+    background: white;
 }
 
 .contact-item:hover {
@@ -110,7 +60,7 @@
 .contact-item h3 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: rgb(54, 54, 80);
+    color: #fff;
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
@@ -121,16 +71,17 @@
     width: 24px;
     height: 24px;
     vertical-align: middle;
+    filter: brightness(0) invert(1);
 }
 
 .contact-item p {
-    color: #666;
+    color: rgba(255, 255, 255, 0.8);
     margin: 0;
     line-height: 1.6;
 }
 
 .contact-item a {
-    color: rgb(54, 54, 80);
+    color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
 }

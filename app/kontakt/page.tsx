@@ -1,6 +1,7 @@
 import { ContactForm } from "@/components/contact-form";
 import { SiteImage } from "@/components/site-image";
 import { createPageMetadata } from "@/lib/metadata";
+import { HeroReveal } from "@/components/hero-reveal";
 
 export const metadata = createPageMetadata({
   title: "Kontakt",
@@ -12,7 +13,7 @@ export const metadata = createPageMetadata({
 export default function KontaktPage() {
   return (
     <main>
-      <section className="hero-contact page-hero">
+      <section className="page-hero">
         <div className="page-hero-media">
           <SiteImage
             src="/assets/images/Translucentne stropy/IMG_0486-1.jpeg"
@@ -24,9 +25,11 @@ export default function KontaktPage() {
           />
         </div>
         <div className="container">
-          <h1 data-text="Kontakt" className="animate">
-            Kontakt
-          </h1>
+          <HeroReveal>
+            <h1>
+              Kontakt
+            </h1>
+          </HeroReveal>
         </div>
       </section>
 

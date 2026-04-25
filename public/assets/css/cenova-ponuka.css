@@ -1,55 +1,6 @@
 /* Pricing/Quote Page Specific Styles */
 
-.hero-pricing {
-    padding: 120px 0 80px;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/Translucentne stropy/IMG_0486-1.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    text-align: center;
-    color: white;
-}
-
-/* Override transparent navbar styles for pricing page */
-.navbar-transparent .logo-text .logo-line {
-    color: white !important;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
-}
-
-.navbar-transparent .nav-link {
-    color: white !important;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Override for mobile navigation - keep dark text */
-@media (max-width: 768px) {
-    .nav-menu .nav-link {
-        color: #333 !important;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
-    }
-}
-
-.navbar-transparent .hamburger span {
-    background: white !important;
-}
-
-.hero-pricing h1 {
-    font-size: 6.75rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 1rem;
-    text-align: left;
-    margin-left: 80px;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease;
-    line-height: 1.1;
-}
-
-.hero-pricing h1.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
+/* Hero styles moved to global page-hero */
 
 .pricing-content {
     padding: 6rem 0;

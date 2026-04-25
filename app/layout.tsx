@@ -71,7 +71,6 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="/assets/css/common.css" />
         <link rel="stylesheet" href="/assets/css/header.css" />
-        <link rel="stylesheet" href="/assets/css/footer.css" />
         <link rel="stylesheet" href="/assets/css/index.css" />
         <link rel="stylesheet" href="/assets/css/stropy.css" />
         <link rel="stylesheet" href="/assets/css/galeria.css" />

@@ -4,6 +4,7 @@ import { SiteImage } from "@/components/site-image";
 import { RollingText } from "@/components/rolling-text";
 import { StropySidebar } from "@/components/stropy-sidebar";
 import { createPageMetadata } from "@/lib/metadata";
+import { HeroReveal } from "@/components/hero-reveal";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -36,16 +37,18 @@ export default async function StropDetailPage({ params }: PageProps) {
           <SiteImage
             src={service.images[0]}
             alt={service.title}
-            className="page-hero-image"
             fill
             priority
+            className="page-hero-image"
             sizes="100vw"
           />
         </div>
         <div className="container">
-          <h1 data-text={service.title} className="animate">
-            {service.title}
-          </h1>
+          <HeroReveal>
+            <h1>
+              {service.title}
+            </h1>
+          </HeroReveal>
         </div>
       </section>
 
@@ -66,7 +69,7 @@ export default async function StropDetailPage({ params }: PageProps) {
                       alt={`${service.title} ${idx + 1}`}
                       fill
                       className="gallery-image"
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="(max-width: 768px) 50vw, 33vw"
                     />
                   </div>
                 ))}
@@ -80,6 +83,25 @@ export default async function StropDetailPage({ params }: PageProps) {
                   <RollingText primary="Viac realizácií" secondary="Pozrieť kategóriu" />
                 </a>
               </div>
+              
+              <div className="strop-advantages">
+                <h3>Výhody Napínacích stropov</h3>
+                <div className="advantages-list">
+                  {[
+                    "Ukryje všetky inštalácie a nedokonalosti hrubej stavby (napr. káble, nerovnosti, praskliny)",
+                    "Môže mať aj farebné vyhotovenia a v kombinácii s osvetlením vytvorí moderné vzhľady",
+                    "Nežltne neovísa a nie je ho možné jednoducho poškodiť",
+                    "Je zdraviu nezávadný, časom nepraská, je vodovzdorný a nepodporuje horenie",
+                    "Opticky zväčšuje priestor",
+                  ].map((item) => (
+                    <div key={item} className="advantage-item">
+                      <span className="check">✓</span>
+                      <p>{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
             </section>
           </div>
         </div>
